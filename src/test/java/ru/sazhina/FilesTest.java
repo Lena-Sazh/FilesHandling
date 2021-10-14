@@ -26,6 +26,7 @@ public class FilesTest {
             assert is != null;
             parsed = new String(is.readAllBytes(), StandardCharsets.UTF_8);
             assertThat(parsed).contains("Test file .txt");
+            assertThat(parsed).doesNotContain("Dummy check");
         }
     }
 
@@ -62,6 +63,8 @@ public class FilesTest {
                     .isEqualTo("TEST");
             assertThat(parsed.excel.getSheetAt(0).getRow(0).getCell(1).getStringCellValue())
                     .isEqualTo("test");
+            assertThat(parsed.excel.getSheetAt(0).getRow(1).getCell(0).getStringCellValue())
+                    .isEqualTo("NewTest");
         }
     }
 
@@ -95,9 +98,9 @@ public class FilesTest {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("docx.docx")) {
             assert is != null;
             XWPFDocument file = new XWPFDocument(is);
-            XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(file);
-            String docText = xwpfWordExtractor.getText();
-            assertThat(docText.contains("Test file .docx"));
+            XWPFWordExtractor extractor = new XWPFWordExtractor(file);
+            String text = extractor.getText();
+            assertThat(text.contains("Test file .docx"));
         }
     }
 }
