@@ -1,5 +1,5 @@
-### QA Guru / HW №7
-#### Files handling examlpes for .txt, .pdf, .xls/.xlsx, .zip (with pass), .doc/.docx
+#### QA Guru / HW №7
+### Files handling examlpes for .txt, .pdf, .xls/.xlsx, .zip (with pass), .doc/.docx
 ___
 
 
